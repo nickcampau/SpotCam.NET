@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotCamInterop", "SpotCamInterop\SpotCamInterop.csproj", "{28719F5C-5BF6-45A0-AE1B-0A137AFDC47D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7250D5C6-0370-485F-84AD-22A09EC202FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{EC53199A-49A0-4771-B879-C090DBB0278B}"
+	ProjectSection(SolutionItems) = preProject
+		libs\SpotCamProxy.dll = libs\SpotCamProxy.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptureAndSaveImageFile", "CaptureAndSaveImageFile\CaptureAndSaveImageFile.csproj", "{23D527BF-E64E-4F4F-90D7-2D657825F9FF}"
+EndProject
+Global
+	GlobalSection(SharpSetup) = preSolution
+		Version = 1.2
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28719F5C-5BF6-45A0-AE1B-0A137AFDC47D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28719F5C-5BF6-45A0-AE1B-0A137AFDC47D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28719F5C-5BF6-45A0-AE1B-0A137AFDC47D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{28719F5C-5BF6-45A0-AE1B-0A137AFDC47D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{28719F5C-5BF6-45A0-AE1B-0A137AFDC47D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{28719F5C-5BF6-45A0-AE1B-0A137AFDC47D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28719F5C-5BF6-45A0-AE1B-0A137AFDC47D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28719F5C-5BF6-45A0-AE1B-0A137AFDC47D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{28719F5C-5BF6-45A0-AE1B-0A137AFDC47D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{28719F5C-5BF6-45A0-AE1B-0A137AFDC47D}.Release|x86.ActiveCfg = Release|Any CPU
+		{23D527BF-E64E-4F4F-90D7-2D657825F9FF}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{23D527BF-E64E-4F4F-90D7-2D657825F9FF}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{23D527BF-E64E-4F4F-90D7-2D657825F9FF}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{23D527BF-E64E-4F4F-90D7-2D657825F9FF}.Debug|x86.ActiveCfg = Debug|x86
+		{23D527BF-E64E-4F4F-90D7-2D657825F9FF}.Debug|x86.Build.0 = Debug|x86
+		{23D527BF-E64E-4F4F-90D7-2D657825F9FF}.Release|Any CPU.ActiveCfg = Release|x86
+		{23D527BF-E64E-4F4F-90D7-2D657825F9FF}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{23D527BF-E64E-4F4F-90D7-2D657825F9FF}.Release|Mixed Platforms.Build.0 = Release|x86
+		{23D527BF-E64E-4F4F-90D7-2D657825F9FF}.Release|x86.ActiveCfg = Release|x86
+		{23D527BF-E64E-4F4F-90D7-2D657825F9FF}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EC53199A-49A0-4771-B879-C090DBB0278B} = {7250D5C6-0370-485F-84AD-22A09EC202FD}
+	EndGlobalSection
+EndGlobal
