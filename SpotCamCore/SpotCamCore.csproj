@@ -8,7 +8,7 @@
     <ProjectGuid>{28719F5C-5BF6-45A0-AE1B-0A137AFDC47D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SpotCamInterop</RootNamespace>
+    <RootNamespace>SpotCam</RootNamespace>
     <AssemblyName>SpotCamInterop</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -44,17 +44,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camera.cs" />
+    <Compile Include="CameraFactory.cs" />
+    <Compile Include="DisconnectionEventArgs.cs" />
+    <Compile Include="Device.cs" />
+    <Compile Include="Diagnostics\CameraAttributes.cs" />
+    <Compile Include="ColorRenderingIntent.cs" />
+    <Compile Include="Diagnostics\DeviceDetails.cs" />
+    <Compile Include="Diagnostics\FirmwareUpdate.cs" />
+    <Compile Include="Diagnostics\SpotVersionDetails.cs" />
+    <Compile Include="ExternalTriggerEvent.cs" />
+    <Compile Include="Diagnostics\GainPortAttributes.cs" />
+    <Compile Include="ImageDataFormat.cs" />
+    <Compile Include="Diagnostics\ImageSensorType.cs" />
+    <Compile Include="Interop\SpotStatus.cs" />
+    <Compile Include="ReadoutChannelMode.cs" />
+    <Compile Include="SensorClearMode.cs" />
+    <Compile Include="SensorOpticalFilter.cs" />
+    <Compile Include="PhotographicLighting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpotCamInterop.cs" />
-    <Compile Include="SpotCamParameters.cs" />
-    <Compile Include="SpotCamReturnCode.cs" />
-    <Compile Include="SpotMessages.cs" />
+    <Compile Include="Rotation.cs" />
+    <Compile Include="SensorResponseMode.cs" />
+    <Compile Include="ShutterMode.cs" />
+    <Compile Include="Interop\SpotCamService.cs" />
+    <Compile Include="Interop\CoreParameter.cs" />
+    <Compile Include="Interop\SpotCamReturnCode.cs" />
+    <Compile Include="Interop\SpotMessages.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\libs\SpotCamProxy.dll">
       <Link>SpotCamProxy.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Imaging\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

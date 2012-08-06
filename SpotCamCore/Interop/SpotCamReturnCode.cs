@@ -2,9 +2,10 @@
 namespace SpotCam.Interop
 {
     /// <summary>
-    /// All return code values defined in the SpotCam API up to version 5.0
+    /// Return code values defined in the native SpotCam API.
+    /// Negative values are only warnings.
     /// </summary>
-    /// <remarks>Negative values are only warnings</remarks>
+    /// <remarks>Values current as of SpotCam version 5.0</remarks>
     public enum SpotCamReturnCode : int
     {
         /// <summary>
@@ -243,7 +244,7 @@ namespace SpotCam.Interop
         ErrorSpotcamServiceNotFound             =  212,
 
         /// <summary>
-        /// Unable to locate the requested BaseService service
+        /// Unable to locate the requested SpotCamService service
         /// </summary>
         ErrorWrongSpotcamServiceVersion         =  213,
 

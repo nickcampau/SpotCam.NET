@@ -1,7 +1,12 @@
 ﻿namespace SpotCam.Interop
 {
-    public enum SpotCamParameter : short
+    public enum CoreParameter : short
     {
+        /// <summary>
+        /// An invalid parameter
+        /// </summary>
+        Unknown = 0,
+        
         ///<summary>
         /// 
         ///</summary>
@@ -265,11 +270,6 @@
         ///<summary>
         /// 
         ///</summary>
-        LiveExposure                            =  210,
-
-        ///<summary>
-        /// 
-        ///</summary>
         MinimumExposureMsec                     =  211,
 
         ///<summary>
@@ -515,11 +515,6 @@
         ///<summary>
         /// 
         ///</summary>
-        SequentialImageExposureDurations        =  266,
-
-        ///<summary>
-        /// 
-        ///</summary>
         LiveSubtractBlackLevel                  =  267,
 
         ///<summary>
@@ -550,7 +545,7 @@
         ///<summary>
         /// 
         ///</summary>
-        SequentialImageExpdurs64                =  274,
+        SequentialImageExposureDurations64      =  274,
 
         ///<summary>
         /// 

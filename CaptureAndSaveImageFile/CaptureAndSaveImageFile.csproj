@@ -55,9 +55,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SpotCamInterop\SpotCamInterop.csproj">
+    <ProjectReference Include="..\SpotCamCore\SpotCamCore.csproj">
       <Project>{28719F5C-5BF6-45A0-AE1B-0A137AFDC47D}</Project>
-      <Name>SpotCamInterop</Name>
+      <Name>SpotCamCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
