@@ -45,14 +45,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera.cs" />
+    <Compile Include="CameraBusyException.cs" />
+    <Compile Include="CameraException.cs" />
     <Compile Include="CameraFactory.cs" />
+    <Compile Include="CameraNotSupportedException.cs" />
+    <Compile Include="CameraState.cs" />
+    <Compile Include="ServiceConfigurationException.cs" />
+    <Compile Include="EnvironmentalException.cs" />
+    <Compile Include="FatalCameraException.cs" />
+    <Compile Include="InvalidColorProfileException.cs" />
+    <Compile Include="DeviceList.cs" />
     <Compile Include="DisconnectionEventArgs.cs" />
     <Compile Include="Device.cs" />
     <Compile Include="Diagnostics\CameraAttributes.cs" />
     <Compile Include="ColorRenderingIntent.cs" />
     <Compile Include="Diagnostics\DeviceDetails.cs" />
     <Compile Include="Diagnostics\FirmwareUpdate.cs" />
-    <Compile Include="Diagnostics\SpotVersionDetails.cs" />
+    <Compile Include="Diagnostics\SpotCamServiceDetails.cs" />
     <Compile Include="ExternalTriggerEvent.cs" />
     <Compile Include="Diagnostics\GainPortAttributes.cs" />
     <Compile Include="ImageDataFormat.cs" />
@@ -70,6 +79,7 @@
     <Compile Include="Interop\CoreParameter.cs" />
     <Compile Include="Interop\SpotCamReturnCode.cs" />
     <Compile Include="Interop\SpotMessages.cs" />
+    <Compile Include="SpotCamServiceException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\libs\SpotCamProxy.dll">

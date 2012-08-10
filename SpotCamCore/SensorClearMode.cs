@@ -29,9 +29,10 @@ namespace SpotCam
         /// <remarks>
         /// Usage of this mode should be considered carefully.
         /// Disabling the clearing of the sensor's readout registers will result in an accumulation 
-        /// of electrical charge on the image sensor. It will then be added to the photonic signal on the completion of
-        /// the exposure. Enable this mode only to prevent a partial clearing to occur when acquiring short exposure
-        /// images in succession. (Live, Sequential imaging) 
+        /// of electrical charge on the image sensor.
+        /// This extra charge will then be added to the photonic signal on the completion of the exposure.
+        /// Enable this mode only to prevent a partial clearing to occur when acquiring short exposure
+        /// images in succession. (Live, Sequential Imaging) 
         /// </remarks> 
         NeverClear = 4
     }

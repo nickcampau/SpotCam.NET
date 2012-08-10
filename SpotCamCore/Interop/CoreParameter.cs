@@ -8,32 +8,32 @@
         Unknown = 0,
         
         ///<summary>
-        /// 
+        /// BOOL
         ///</summary>
         AutoExpose                              =  100,
 
         ///<summary>
-        /// 
+        /// float
         ///</summary>
         BrightnessAdjustment                    =  101,
 
         ///<summary>
-        /// 
+        /// short
         ///</summary>
         AutoGainLimit                           =  102,
 
         ///<summary>
-        /// 
+        /// short
         ///</summary>
         BinSize                                 =  103,
 
         ///<summary>
-        /// 
+        /// SPOT_RECT structure
         ///</summary>
         ImageRect                               =  104,
 
         ///<summary>
-        /// 
+        /// SPOT_COLOR_ENABLE_STRUCT
         ///</summary>
         ColorEnable                             =  108,
 
@@ -50,7 +50,7 @@
         ///<summary>
         /// 
         ///</summary>
-        ImageType                               =  111,
+        PhotographicLighting = 111,
 
         ///<summary>
         /// 
@@ -76,11 +76,6 @@
         /// 
         ///</summary>
         BrightnessAdjustmentLimits              =  120,
-
-        ///<summary>
-        /// 
-        ///</summary>
-        BinSizeLimits                           =  121,
 
         ///<summary>
         /// 
@@ -116,11 +111,6 @@
         /// 
         ///</summary>
         MaxWhiteBalanceRatio                    =  131,
-
-        ///<summary>
-        /// 
-        ///</summary>
-        MinExposureIncrement                    =  133,
 
         ///<summary>
         /// 

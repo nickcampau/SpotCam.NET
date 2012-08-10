@@ -7,11 +7,13 @@ namespace SpotCam
 {
     public class Device
     {
-        internal Interop.SPOT_DEVICE_STRUCT baseData;
+        Interop.SPOT_DEVICE_STRUCT baseData;
         
-        internal Device(Interop.SPOT_DEVICE_STRUCT device)
+        internal Device(Interop.SPOT_DEVICE_STRUCT device, int deviceIndex)
         {
             baseData = device;
+            DeviceListIndex = deviceIndex;
+            IsPoweredOn = baseData.DeviceUID != 0;
         }
 
         public Diagnostics.DeviceClass DeviceClass { get { return baseData.DeviceClass;} }
@@ -28,6 +30,8 @@ namespace SpotCam
         /// </summary>
         public UInt64 DeviceUID { get { return baseData.DeviceUID; } }
 
-        public bool IsPoweredOn { get { return baseData.DeviceUID != 0; } }
+        public bool IsPoweredOn { get; internal set; }
+
+        internal int DeviceListIndex { get; private set; }
     }
 }

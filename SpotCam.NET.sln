@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotCamCore", "SpotCamCore\SpotCamCore.csproj", "{28719F5C-5BF6-45A0-AE1B-0A137AFDC47D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7250D5C6-0370-485F-84AD-22A09EC202FD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{7250D5C6-0370-485F-84AD-22A09EC202FD}"
 	ProjectSection(SolutionItems) = preProject
 		README = README
 	EndProjectSection
@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{EC53199A-4
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptureAndSaveImageFile", "CaptureAndSaveImageFile\CaptureAndSaveImageFile.csproj", "{23D527BF-E64E-4F4F-90D7-2D657825F9FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{13F74C40-2E04-4C74-8DD7-D5DE88ECF57C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,7 +52,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{EC53199A-49A0-4771-B879-C090DBB0278B} = {7250D5C6-0370-485F-84AD-22A09EC202FD}
+		{23D527BF-E64E-4F4F-90D7-2D657825F9FF} = {13F74C40-2E04-4C74-8DD7-D5DE88ECF57C}
 	EndGlobalSection
 	GlobalSection(SharpSetup) = preSolution
 		Version = 1.2
