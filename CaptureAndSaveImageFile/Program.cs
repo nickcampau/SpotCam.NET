@@ -20,38 +20,53 @@ namespace CaptureAndSaveImageFile
             {
                 CameraFactory.Initialize();
                 foreach (var device in CameraFactory.DeviceList)
-                {
                     Console.WriteLine("Found device: {0}", device.Description);
-                }
-                SpotVersionDetails versionInfo;
+                SpotCamServiceDetails versionInfo;
                 SpotCamService.SpotGetVersionInfo2(out versionInfo);
                 Console.WriteLine("Connected to driver:\n{0} {1}.{2}.{3} - {4}", versionInfo.ProductName, versionInfo.VerMajor, versionInfo.VerMinor, versionInfo.VerUpdate, versionInfo.BuildDetails);
                 Console.WriteLine(versionInfo.Copyright);
+                var camera = CameraFactory.DeviceList.Last().Create();
+                Console.WriteLine("Camera Details:");
+                Console.WriteLine("Model:{0}, SN:{1}, Firmware Rev: {2}, Hardware Rev: {3}", camera.Model, camera.SerialNumber, camera.FirmwareVersion, camera.HardwareVersion);
+                Console.WriteLine("Capturing test TIFF image");
+                CaptureAndSaveTestImage(camera, "SampleImage.tif");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine("Fatal Error: {0}", ex);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.BackgroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Fatal Error:\n{0}", ex.Message);
+                Console.ResetColor();
             }
-            var camera = CameraFactory.DeviceList.Last().Create();
-            Console.WriteLine("Camera Details:");
-            Console.WriteLine("Model:{0}, SN:{1}, Firmware Rev: {2}, Hardware Rev: {3}", camera.Model, camera.SerialNumber, camera.FirmwareVersion, camera.HardwareVersion);
-            Console.WriteLine("Capturing test TIFF image");
-            CaptureAndSaveTestImage("SampleImage.tif");
-            Console.WriteLine("SpotShutDown returned: {0}", SpotCamService.SpotShutDown());
+            finally
+            {
+                CameraFactory.Shutdown();
+            }
         }
 
-        public unsafe static void CaptureAndSaveTestImage(string fileName)
+        public static void CaptureAndSaveTestImage(Camera camera, string fileName)
         {
-            //Create a BitmapData and Lock all pixels to be written
-            var imageSize = GetImageSize();
-            var monochromeBitDepths = GetSupportedBitDepths().Where(x => x < 24).ToArray();
+            var monochromeBitDepths = SpotCamService.BitDepths.Where(x => x < 24).ToArray();
             if (!monochromeBitDepths.Any())
                 throw new NotSupportedException("The camera does not support acquiring monochrome images");
             short maxMonoBitDepth = monochromeBitDepths.Max();
-            unsafe
+            SpotCamService.BitDepth = maxMonoBitDepth;
+            if (camera.Attributes.HasFlag(CameraAttributes.Mosaic))
             {
-                Debug.Assert(SpotCamReturnCode.Success == SpotCamService.SpotSetValue(CoreParameter.BitDepth, new IntPtr(&maxMonoBitDepth)));
+                // Mosaic cameras can return monochrome images in one of two ways.
+                // As a raw mosaic image (bayer pixel pattern)
+                // With a binning value greater than 1 (if supported by the camera)
+                var binningLevelsAboveOne = from binSize in SpotCamService.BinningSizes
+                                            where binSize > 1
+                                            orderby binSize ascending
+                                            select binSize;
+                if (binningLevelsAboveOne.Any())
+                    SpotCamService.BinSize = binningLevelsAboveOne.First();
+                else
+                    SpotCamService.ReturnRawMosaicData = true;
             }
+            var imageSize = GetImageSize();
+            //Create a BitmapData and Lock all pixels to be written
             var bmp = new Bitmap(imageSize.Width, imageSize.Height, maxMonoBitDepth <= 8 ? PixelFormat.Format8bppIndexed : PixelFormat.Format16bppGrayScale);
             var bmpData = bmp.LockBits(new Rectangle(Point.Empty, bmp.Size), ImageLockMode.WriteOnly, bmp.PixelFormat);
             var getImageReturnCode = SpotCamService.SpotGetImage(0, 0, 0, bmpData.Scan0, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
@@ -64,16 +79,9 @@ namespace CaptureAndSaveImageFile
             SaveToTiffFile(bmp, fileName);
         }
 
-        private unsafe static Size GetImageSize()
+        private static Size GetImageSize()
         {
-            SPOT_SIZE imageSize;
-            unsafe
-            {
-                var returnCode = SpotCamService.SpotGetValue(CoreParameter.AcquiredImageSize, new IntPtr(&imageSize));
-                Debug.Assert(SpotCamReturnCode.Success == returnCode,
-                    "Unable to query device for the final image resolution",
-                    "SpotCamReturnCode: {0}", returnCode);
-            }
+            SPOT_SIZE imageSize = SpotCamService.AcquiredImageSize;
             return new Size((int)imageSize.Width, (int)imageSize.Height);
         }
 
@@ -91,7 +99,7 @@ namespace CaptureAndSaveImageFile
                 // not a reference to it.
                 // Therefore it must be captured, modified and then replaced
                 var nonCreatableCachedPalette = bitmap.Palette;
-                for (int ix = 0; ix < bitmap.Palette.Entries.Length; ++ix)
+                for (int ix = 0; ix < nonCreatableCachedPalette.Entries.Length; ++ix)
                     nonCreatableCachedPalette.Entries[ix] = Color.FromArgb(ix, ix, ix);
                 bitmap.Palette = nonCreatableCachedPalette;
                 bitmap.Save(fileName, ImageFormat.Tiff);
@@ -119,18 +127,6 @@ namespace CaptureAndSaveImageFile
                     }
                 }
             }
-        }
-
-        private static short[] GetSupportedBitDepths()
-        {
-            var buffer = Marshal.AllocHGlobal(SpotCamService.SpotGetValueSize(CoreParameter.BitDepths));
-            var returnCode = SpotCamService.SpotGetValue(CoreParameter.BitDepths, buffer);
-            Debug.Assert(SpotCamReturnCode.Success == returnCode,
-                "Unable to query device for available bit depths",
-                "SpotCamReturnCode: {0}", returnCode);
-            var availableBitDepths = SpotCamService.MarshalLengthPrefixArray<short>(buffer);
-            Marshal.FreeHGlobal(buffer);
-            return availableBitDepths;
         }
     }
 }

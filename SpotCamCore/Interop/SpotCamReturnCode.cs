@@ -89,7 +89,7 @@ namespace SpotCam.Interop
         ErrorRegistrySet                        =  110,
 
         /// <summary>
-        /// Error loading device driver
+        /// Error loading associatedDevice driver
         /// </summary>
         ErrorDeviveDriverLoad                   =  112,
 

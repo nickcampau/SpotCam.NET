@@ -10,6 +10,7 @@ namespace SpotCam
         Unknown,
         Requested,
         DeviceRemoved,
+        DevicePoweredOff,
         ForcedByService
     }
 

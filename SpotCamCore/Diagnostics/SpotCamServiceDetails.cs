@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 namespace SpotCam.Diagnostics
 {
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
-    public struct SpotVersionDetails
+    public struct SpotCamServiceDetails
     {
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 255)]
         public string ProductName;

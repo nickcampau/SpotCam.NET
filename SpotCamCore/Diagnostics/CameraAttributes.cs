@@ -49,7 +49,7 @@ namespace SpotCam.Diagnostics
         ClearFilter             = 0x00000040,
 
         /// <summary>
-        /// camera is an IEEE-1394/FireWire device
+        /// camera is an IEEE-1394/FireWire associatedDevice
         /// </summary>
         Ieee1394                = 0x00000080,
 
